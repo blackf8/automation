@@ -18,6 +18,20 @@ public class newAutomation{
     //stringParse(finalReturn);
   }
   /**
+  * Method Name: bufferedReaderCreator
+  * Details: Creates a bufferedReader for a specified execution in command prompt
+  * @param execution: A string that contains the command that will be executed
+  * @return inputBufferReader: An bufferedreader to read the data from the execution
+  **/
+  public static BufferedReader bufferedReaderCreator(String execution)throws IOException{
+    Runtime rt = Runtime.getRuntime();
+    Process pr = rt.exec(execution);
+    InputStream input = pr.getInputStream();
+    InputStreamReader inputReader = new InputStreamReader(input);
+    BufferedReader inputBufferReader = new BufferedReader(new InputStreamReader((pr.getInputStream())));
+    return inputBufferReader;
+  }
+  /**
   * Method Name: wifiProfileToString
   * Details: Uses the bufferedReader object to
   * convert the wifiprofile into a string
@@ -64,19 +78,5 @@ public class newAutomation{
       }
     }
     return password;
-  }
-  /**
-  * Method Name: bufferedReaderCreator
-  * Details: Creates a bufferedReader for a specified execution in command prompt
-  * @param execution: A string that contains the command that will be executed
-  * @return inputBufferReader: An bufferedreader to read the data from the execution
-  **/
-  public static BufferedReader bufferedReaderCreator(String execution)throws IOException{
-    Runtime rt = Runtime.getRuntime();
-    Process pr = rt.exec(execution);
-    InputStream input = pr.getInputStream();
-    InputStreamReader inputReader = new InputStreamReader(input);
-    BufferedReader inputBufferReader = new BufferedReader(new InputStreamReader((pr.getInputStream())));
-    return inputBufferReader;
   }
 }
